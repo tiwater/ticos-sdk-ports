@@ -1,0 +1,3 @@
+[submodule "ports/jieli/examples/03_cloud/Ticos_Cloud/ticos-llsync-port"]
+	path = ports/jieli/examples/03_cloud/Ticos_Cloud/ticos-llsync-port
+	url = https://github.com/tiwater/ticos-llsync-port.git
