@@ -51,7 +51,13 @@ static void fibo_mqtt_connect_start(void){
  */
 int ticos_hal_mqtt_publish(const char *topic, const char *data, int len, int qos, int retain)
 {
-    return 0;//fibo_mqtt_pub(topic, qos, retain, data, len);
+    //fibo_mqtt_pub(INT8 *topic, UINT8 qos, BOOL retain, INT8 *message, UINT16 msglen);
+    INT8 *fibo_pub_topic  = (INT8 *)topic;
+    INT8 *fibo_pub_message = (INT8 *)data;
+    UINT8 fibo_pub_qos = (UINT8) qos;
+    BOOL fibo_pub_retain = (BOOL) retain;
+    UINT16 fibo_pub_msglen = (UINT16) len;
+    return fibo_mqtt_pub(fibo_pub_topic, fibo_pub_qos, fibo_pub_retain, fibo_pub_message, fibo_pub_msglen);
 }
 
 /**
@@ -63,7 +69,10 @@ int ticos_hal_mqtt_publish(const char *topic, const char *data, int len, int qos
  */
 int ticos_hal_mqtt_subscribe(const char *topic, int qos)
 {
-    return 0;//fibo_mqtt_sub(topic, qos);
+    INT8 *fibo_sub_topic  = (INT8 *)topic;
+    UINT8 fibo_sub_qos = (UINT8) qos;
+    //INT32 fibo_mqtt_sub(INT8 *topic, UINT8 qos);
+    return fibo_mqtt_sub(fibo_sub_topic, fibo_sub_qos);
 }
 
 
