@@ -33,7 +33,7 @@
 	#define CONFIG_BT_GATT_CLIENT_NUM          0 //配置主机client个数(app not support,应用不支持使能)
 	#define CONFIG_BT_GATT_SERVER_NUM          1 //配置从机server个数,max is 1
 	#define CONFIG_BT_GATT_CONNECTION_NUM      (CONFIG_BT_GATT_SERVER_NUM + CONFIG_BT_GATT_CLIENT_NUM) //配置连接个数
-##### 5.app_mian.c中做如下改动即可  
+##### 5.app_main.c中做如下改动即可  
 
 	#elif CONFIG_APP_CONN_24G
 	    it.name = "conn_24g";
@@ -50,5 +50,27 @@
 	
 	    ticos_cloud_start();
 	    //start_app(&it);
+
+#####6.OTA升级  
+6.1:board_acxx_demo_global_build_cfg.h中修改如下:  
+
+	#define CONFIG_DOUBLE_BANK_ENABLE               1       //单双备份选择(若打开了改宏,FLASH结构变为双备份结构，适用于接入第三方协议的OTA， PS: JL-OTA同样支持双备份升级, 需要根据实际FLASH大小同时配置CONFIG_FLASH_SIZE)
+	#define CONFIG_FLASH_SIZE                       FLASH_SIZE_512K    //配置FLASH大小,与自己实际使用的flash匹配
+	#define CONFIG_DB_UPDATE_DATA_GENERATE_EN       1       //是否生成db_data.bin(用于第三方协议接入使用)
+6.2:usercfg.c中屏蔽如下代码       
+ 
+    // 屏蔽之后则MAC会默认存储到VM分区, 设置VM分区OTA后不变,可保证OTA之后MAC地址不变.
+	//{CFG_BT_MAC_ADDR, 			6 },
+6.3:在isd_config_rule.c中固定VM存储位置   
+		
+	  // 此存储位置需根据实际项目确定. 
+	  #define CONFIG_VM_ADDR		0x7C000//0
+
+OTA待升级文件名为: db_update_data.bin
+
+
+
+
+
 
 
