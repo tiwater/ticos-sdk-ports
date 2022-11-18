@@ -227,6 +227,7 @@ void user_signal_process(GAPP_SIGNAL_ID_T sig, va_list arg)
         qos = va_arg(arg, int);
         message = va_arg(arg, char *);
         len = va_arg(arg, uint32_t);
+        ticos_msg_recv(topic, message, (int) len);
         OSI_PRINTFI("mqttapi recv message :topic:%s, qos=%d message=%s len=%d", topic, qos, message, len);
         break;
     default:
