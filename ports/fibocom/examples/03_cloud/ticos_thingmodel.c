@@ -39,6 +39,7 @@ int ticos_property_switch_send()
 
 int ticos_property_switch_recv(int switch_)
 {
+    switch_state = switch_;
     return 0;
 }
 
@@ -51,6 +52,7 @@ int ticos_property_light_recv(int light)
 {
     //TODO  some action if you need defined in user source files
     //set_led_light(light); 
+    led_light = light;
     return 0;
 }
 
