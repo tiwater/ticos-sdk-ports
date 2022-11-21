@@ -1,6 +1,6 @@
 # ticos cloud 接入移植示例
 
-本示例完成L610系列OpenCPU下的基础编译环境搭建，提供L610系列模组物模型接入ticos clous平台的能力以及ticos-sdk-for-c的硬件适配hal层实现。
+本示例提供L610系列模组物模型接入ticos clous平台的能力以及ticos-sdk-for-c的硬件适配hal层实现。
 
 # 移植
 移植和环境搭建参见[README.md](README.md)。
