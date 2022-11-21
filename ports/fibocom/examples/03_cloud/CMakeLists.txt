@@ -34,7 +34,7 @@ set(BUILD_SHARED_LIBS OFF)
 
 project(core C CXX ASM)
 
-include_directories(components/include components/newlib/include ticos/ticos-sdk-for-c/src)
+include_directories(components/include components/newlib/include ticos/ticos-sdk-for-c/src ticos/fibocom/examples/03_cloud ticos/fibocom/src/cJSON)
 
 function(cpp_only target file)
     add_library(${target} OBJECT ${file})
@@ -116,8 +116,11 @@ if(CONFIG_APPIMG_LOAD_FLASH)
     set(target cloud_ticos)
     add_appimg(${target} ${flash_ldscript} 
     	ticos/fibocom/examples/03_cloud/ticos_main.c
+        ticos/fibocom/examples/03_cloud/ticos_thingmodel.c
         ticos/fibocom/src/ticos_mqtt_wrapper.c
+        ticos/fibocom/src/cJSON/cJSON.c
         ticos/ticos-sdk-for-c/src/ticos_core.c
+        ticos/ticos-sdk-for-c/src/ticos_thingmodel_op.c
     	)
     target_link_libraries(${target} PRIVATE ${libc_file_name} ${libm_file_name} ${libgcc_file_name})
     set(prepack_cpio ${out_hex_dir}/${target}_prepack.cpio)
