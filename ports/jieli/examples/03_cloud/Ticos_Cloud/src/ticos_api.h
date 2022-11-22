@@ -11,7 +11,7 @@ extern "C"
  * @brief 启动 ticos 云服务.
  * @return 0 for success, other is error
  */
-int ticos_cloud_start();
+int ticos_cloud_start(char *product_id, char *device_name, char *psk);
 
 /**
  * @brief 停止 ticos 云服务.

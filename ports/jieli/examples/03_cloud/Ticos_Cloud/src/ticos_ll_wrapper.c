@@ -33,7 +33,7 @@ static void ble_pll_init(void)
     bt_pll_para(TCFG_CLOCK_OSC_HZ, sys_clk, 0, 0);
 }
 
-void ticos_hal_ble_start()
+void ticos_hal_ble_start(char *product_id, char *device_name, char *psk)
 {
     if (is_active){
         ble_qiot_advertising_start();
@@ -42,6 +42,7 @@ void ticos_hal_ble_start()
         ble_pll_init();
     }
     is_active = 1;
+    ble_set_dev_info(product_id, device_name, psk);
     btstack_ble_start_before_init(NULL, 0);
     btstack_init();
     ble_qiot_advertising_start();
