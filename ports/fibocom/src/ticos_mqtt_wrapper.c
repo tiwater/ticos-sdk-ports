@@ -165,7 +165,8 @@ int ticos_hal_mqtt_start(const char *url, int port, const char *client_id, const
     memset(mqtt_usr_pwd,0,sizeof(mqtt_usr_pwd));
     
 
-    memcpy(mqtt_host, url ,strlen(url));
+    //memcpy(mqtt_host, url ,strlen(url));
+    sscanf(url, "%*[^/]//%s",mqtt_host);
     mqtt_port = port;
     memcpy(mqtt_client_id, client_id, strlen(client_id));
     memcpy(mqtt_usr_name, user_name, strlen(user_name));
