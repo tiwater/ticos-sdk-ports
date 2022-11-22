@@ -1,6 +1,6 @@
 # Ticos_Cloud使用方式:  
 ### 前置条件:对于杰理的SDK有初步的了解,参见:[https://github.com/Jieli-Tech/fw-AC63_BT_SDK](https://github.com/Jieli-Tech/fw-AC63_BT_SDK)   
-##### 1.将Ticos_Cloud文件夹放入杰理SDK的\apps\common\third_party_profile\目录下.使用code::blocks打开工程.  
+##### 1.在杰理的SDK中\apps\common\thirdparty_profile\目录下,新建Ticos_Cloud文件夹.并在其中新建src文件夹.在src文件夹下放入ticos_api.h,ticos_core.c,ticos_ll_wrapper.c.并将ticos-llsync-port放在src的同级目录下.  
   
 ##### 2.通过右键工程Add files recursively将Ticos_Cloud文件夹加入工程.默认会将整个文件夹加入,需要再手动将hal中的esp32移除(因为目前ticos_cloud使用的是腾讯连连,所以需要将Tecent_LL从工程中移除,否则会编译出错.)  
 
